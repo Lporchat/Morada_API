@@ -5,6 +5,7 @@ interface IPostRepository {
   delete(id: string): Promise<void>;
   list(): Promise<Posts[]>;
   findById(id: string): Promise<Posts>;
+  like(id: string): Promise<void>;
 }
 
 export { IPostRepository };

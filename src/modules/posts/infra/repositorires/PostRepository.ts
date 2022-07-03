@@ -9,6 +9,12 @@ class PostRepository implements IPostRepository {
     this.repository = getRepository(Posts);
   }
 
+  async like(id: string): Promise<void> {
+    const post = await this.repository.findOne({ id });
+    post.likes++;
+    await this.repository.save(post);
+  }
+
   async create(name: string): Promise<Posts> {
     const post = await this.repository.create({
       name,

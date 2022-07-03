@@ -7,6 +7,7 @@ import swaggerFile from "../swagger.json";
 
 import "../src/shared/infra/typeorm";
 import { AppError } from "../src/shared/errors/AppError";
+import { routes } from "./shared/infra/http";
 
 const app = express();
 
@@ -14,6 +15,8 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerFile));
+
+app.use(routes);
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   if (err instanceof AppError) {
@@ -24,6 +27,5 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     message: `Internal Server Error: ${err.message}`,
   });
 });
-
 
 app.listen(3000, () => console.log("its running !!! 🙈"));

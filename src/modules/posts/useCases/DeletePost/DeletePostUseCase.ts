@@ -1,6 +1,6 @@
 import { SimpleConsoleLogger } from "typeorm";
-import { IPostRepository } from "../../infra/repositorires/IPostRepository";
-import { PostRepository } from "../../infra/repositorires/PostRepository";
+import { IPostRepository } from "../../infra/repositories/IPostRepository";
+import { PostRepository } from "../../infra/repositories/PostRepository";
 
 class DeletePostUseCase {
   private postReposirory: IPostRepository;

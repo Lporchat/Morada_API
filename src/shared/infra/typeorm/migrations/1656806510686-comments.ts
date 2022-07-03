@@ -12,6 +12,10 @@ export class comments1656806510686 implements MigrationInterface {
             isPrimary: true,
           },
           {
+            name: "name_user",
+            type: "varchar",
+          },
+          {
             name: "comment",
             type: "varchar",
           },

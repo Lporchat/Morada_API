@@ -1,16 +1,19 @@
 import { Column, Entity, PrimaryColumn } from "typeorm";
 import { v4 } from "uuid";
 
-@Entity("posts")
-class Posts {
+@Entity("comments")
+class Comments {
   @PrimaryColumn()
   id: string;
 
   @Column()
-  name: string;
+  comment: string;
 
   @Column()
-  likes: number;
+  name_user: string;
+
+  @Column()
+  post_id: string;
 
   constructor() {
     if (!this.id) {
@@ -19,4 +22,4 @@ class Posts {
   }
 }
 
-export { Posts };
+export { Comments };

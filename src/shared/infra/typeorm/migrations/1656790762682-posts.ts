@@ -26,6 +26,6 @@ export class posts1656790762682 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("users");
+    await queryRunner.dropTable("posts");
   }
 }

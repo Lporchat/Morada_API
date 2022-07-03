@@ -32,8 +32,10 @@ class PostRepository implements IPostRepository {
     return posts;
   }
 
-  async findById(id: string): Promise<Posts> {
+  async updated(id: string, name: string): Promise<Posts> {
     const post = await this.repository.findOne({ id });
+    post.name = name;
+    await this.repository.save(post);
     return post;
   }
 }

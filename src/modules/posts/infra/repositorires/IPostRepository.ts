@@ -6,6 +6,7 @@ interface IPostRepository {
   list(): Promise<Posts[]>;
   updated(id: string, name: string): Promise<Posts>;
   like(id: string): Promise<void>;
+  deslike(id: string): Promise<boolean>;
 }
 
 export { IPostRepository };

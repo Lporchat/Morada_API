@@ -12,7 +12,7 @@ class ListCommentUseCase {
   }
 
   async execute({ post_id }: IComments): Promise<Comments[]> {
-    console.log(post_id);
+    
     const comments = await this.commentReposirory.list({ post_id });
     return comments;
   }

@@ -11,11 +11,12 @@ class CommentRepository implements ICommentRepository {
   updated(data: IComments): Promise<Comments> {
     throw new Error("Method not implemented.");
   }
-  delete({ id }: IComments): Promise<void> {
-    throw new Error("Method not implemented.");
+  async delete(id: string): Promise<void> {
+    console.log("Deleting comments...");
+    console.log(id);
+    await this.repository.delete({ id });
   }
   async list({ post_id }: IComments): Promise<Comments[]> {
-    console.log(post_id);
     const comments = await this.repository.find({ post_id });
     console.log(comments);
     return comments;

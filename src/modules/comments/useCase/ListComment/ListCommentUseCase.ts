@@ -5,16 +5,17 @@ import {
 } from "../../infra/repositories/ICommentRepository";
 import { Comments } from "../../infra/typeorm/entities/comments";
 
-class CreateCommentUseCase {
+class ListCommentUseCase {
   private commentReposirory: ICommentRepository;
   constructor() {
     this.commentReposirory = new CommentRepository();
   }
 
-  async execute(data: IComments): Promise<Comments> {
-    const comment = await this.commentReposirory.create(data);
-    return comment;
+  async execute({ post_id }: IComments): Promise<Comments[]> {
+    console.log(post_id);
+    const comments = await this.commentReposirory.list({ post_id });
+    return comments;
   }
 }
 
-export { CreateCommentUseCase };
+export { ListCommentUseCase };

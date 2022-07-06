@@ -16,6 +16,10 @@ export class posts1656790762682 implements MigrationInterface {
             type: "varchar",
           },
           {
+            name: "body",
+            type: "varchar",
+          },
+          {
             name: "likes",
             type: "numeric",
             default: 0,

@@ -8,8 +8,8 @@ class CreatePostUseCase {
     this.postReposirory = new PostRepository();
   }
 
-  async execute(name: string): Promise<Posts> {
-    const post = await this.postReposirory.create(name);
+  async execute(name: string, body: string): Promise<Posts> {
+    const post = await this.postReposirory.create(name, body);
 
     return post;
   }

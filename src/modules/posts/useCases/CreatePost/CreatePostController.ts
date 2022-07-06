@@ -4,15 +4,15 @@ import { CreatePostUseCase } from "./CreatePostUseCase";
 
 class CreatePostController {
   async handle(req: Request, res: Response): Promise<Response> {
-    const { name } = req.body;
+    const { name, body } = req.body;
 
-    if (!name) {
-      throw new AppError("Nenhum nome inserido!");
+    if (!name || !body) {
+      throw new AppError("Nenhuma informação inserido!");
     }
 
     const createPostUseCase = new CreatePostUseCase();
 
-    const post = await createPostUseCase.execute(name);
+    const post = await createPostUseCase.execute(name, body);
 
     return res.status(201).json(post);
   }

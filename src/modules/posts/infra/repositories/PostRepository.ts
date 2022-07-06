@@ -27,9 +27,10 @@ class PostRepository implements IPostRepository {
     await this.repository.save(post);
   }
 
-  async create(name: string): Promise<Posts> {
+  async create(name: string, body: string): Promise<Posts> {
     const post = await this.repository.create({
       name,
+      body,
     });
     await this.repository.save(post);
     return post;
@@ -44,9 +45,10 @@ class PostRepository implements IPostRepository {
     return posts;
   }
 
-  async updated(id: string, name: string): Promise<Posts> {
+  async updated(id: string, name: string, body: string): Promise<Posts> {
     const post = await this.repository.findOne({ id });
     post.name = name;
+    post.body = body;
     await this.repository.save(post);
     return post;
   }

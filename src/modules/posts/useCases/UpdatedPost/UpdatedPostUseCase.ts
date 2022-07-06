@@ -8,8 +8,8 @@ class UpdatedPostUseCase {
     this.postReposirory = new PostRepository();
   }
 
-  async execute(id: string, name: string): Promise<void> {
-    await this.postReposirory.updated(id, name);
+  async execute(id: string, name: string, body: string): Promise<void> {
+    await this.postReposirory.updated(id, name, body);
   }
 }
 

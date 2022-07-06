@@ -10,6 +10,9 @@ class Posts {
   name: string;
 
   @Column()
+  body: string;
+
+  @Column()
   likes: number;
 
   constructor() {

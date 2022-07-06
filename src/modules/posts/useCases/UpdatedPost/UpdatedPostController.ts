@@ -4,7 +4,7 @@ import { UpdatedPostUseCase } from "./UpdatedPostUseCase";
 
 class UpdatedPostController {
   async handle(req: Request, res: Response): Promise<Response> {
-    const { id, name } = req.body;
+    const { id, name, body } = req.body;
 
     if (!id) {
       throw new AppError("Nenhum ID inserido!");
@@ -14,9 +14,13 @@ class UpdatedPostController {
       throw new AppError("Nenhum Nome inserido!");
     }
 
+    if (!body) {
+      throw new AppError("Nenhum corpo inserido!");
+    }
+
     const updatedPostUseCase = new UpdatedPostUseCase();
 
-    await updatedPostUseCase.execute(id, name);
+    await updatedPostUseCase.execute(id, name, body);
 
     return res.status(200).send();
   }

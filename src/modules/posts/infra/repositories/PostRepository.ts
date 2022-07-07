@@ -13,7 +13,6 @@ class PostRepository implements IPostRepository {
     const post = await this.repository.findOne({ id });
 
     if (post.likes > 0) {
-      console.log(post.likes >= 0);
       post.likes--;
       await this.repository.save(post);
       return true;

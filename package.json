@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "orm": "tsnd ./node_modules/typeorm/cli",
-    "test": "jest --runInBand --detectOpenHandles",
+    "test": "cls && jest --runInBand --detectOpenHandles",
     "start": "tsnd --ignore-watch node_modules --transpile-only --respawn src/server.ts"
   },
   "dependencies": {

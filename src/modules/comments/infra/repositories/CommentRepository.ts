@@ -19,7 +19,6 @@ class CommentRepository implements ICommentRepository {
   }
   async list({ post_id }: IComments): Promise<Comments[]> {
     const comments = await this.repository.find({ post_id });
-    console.log(comments);
     return comments;
   }
 

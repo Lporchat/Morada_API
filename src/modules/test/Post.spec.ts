@@ -1,8 +1,8 @@
 import { Connection, createConnection } from "typeorm";
-import { Posts } from "../infra/typeorm/entities/posts";
-import { CreatePostUseCase } from "../useCases/CreatePost/CreatePostUseCase";
-import { ListPostUseCase } from "../useCases/ListPosts/ListPostUseCase";
-import { UpdatedPostUseCase } from "../useCases/UpdatedPost/UpdatedPostUseCase";
+import { Posts } from "../posts/infra/typeorm/entities/posts";
+import { CreatePostUseCase } from "../posts/useCases/CreatePost/CreatePostUseCase";
+import { ListPostUseCase } from "../posts/useCases/ListPosts/ListPostUseCase";
+import { UpdatedPostUseCase } from "../posts/useCases/UpdatedPost/UpdatedPostUseCase";
 
 let createPostUseCase: CreatePostUseCase;
 let updatedPostUseCase: UpdatedPostUseCase;
@@ -43,7 +43,6 @@ describe("Create a post", () => {
       "post Editado",
       "post Editado"
     );
-    console.log(postEdit);
     expect(postEdit.body).toEqual("post Editado");
     expect(postEdit.name).toEqual("post Editado");
   });

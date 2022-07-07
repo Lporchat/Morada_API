@@ -1,184 +1,305 @@
 {
-    "openapi": "3.0.0",
-    "info": {
-        "title": "RentX Documentation",
-        "description": "This is an API Rent",
-        "version": "1.0.0",
-        "contact": {
-            "email": "thiagocdn@gmail.com"
-        }
-    },
-    "paths": {
-        "/categories": {
-            "post": {
-                "tags": [
-                    "Category"
-                ],
-                "summary": "Create a category",
-                "description": "Create a new category",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "description": {
-                                        "type": "string"
-                                    }
-                                },
-                                "example": {
-                                    "name": "Category Name Sample",
-                                    "description": "Category Description Sample"
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Created"
-                    },
-                    "500": {
-                        "description": "Category already exists"
-                    }
-                }
-            },
-            "get": {
-                "tags": [
-                    "Category"
-                ],
-                "summary": "List all categories",
-                "description": "List all categories",
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "name": {
-                                                "type": "string"
-                                            },
-                                            "description": {
-                                                "type": "string"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/categories/import": {
-            "post": {
-                "tags": [
-                    "Category"
-                ],
-                "summary": "Upload a new category",
-                "description": "Upload a new category",
-                "requestBody": {
-                    "content": {
-                        "multipart/form-data": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "file": {
-                                        "type": "string",
-                                        "format": "binary"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Created"
-                    }
-                }
-            }
-        },
-        "/specifications": {
-            "post": {
-                "tags": [
-                    "Specifications"
-                ],
-                "summary": "Create a specification",
-                "description": "Create a new specification",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/definitions/Specification"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Created"
-                    },
-                    "500": {
-                        "description": "Specification already exists"
-                    }
-                }
-            },
-            "get": {
-                "tags": [
-                    "Specifications"
-                ],
-                "summary": "List a specification",
-                "description": "List a new specification",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/definitions/ListSpecification"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Created"
-                    }
-                }
-            }
-        }
-    },
-    "definitions": {
-        "Specification": {
-            "type": "array",
-            "properties": {
-                "name": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                }
-            }
-        },
-        "ListSpecification": {
-            "type": "array",
-            "items": {
+  "openapi": "3.0.0",
+  "info": {
+    "title": "RentX Documentation",
+    "description": "This is an API Rent",
+    "version": "1.0.0",
+    "contact": {
+      "email": "thiagocdn@gmail.com"
+    }
+  },
+  "paths": {
+    "/post/create": {
+      "post": {
+        "tags": ["Post"],
+        "summary": "Create a Post",
+        "description": "Create a new Post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
                 "type": "object",
                 "properties": {
-                    "name": {
-                        "type": "string"
-                    },
-                    "description": {
-                        "type": "string"
-                    }
+                  "name": {
+                    "type": "string"
+                  },
+                  "body": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "Post exemple name",
+                  "body": "Post exemple body"
                 }
+              }
             }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
         }
+      }
+    },
+    "/post": {
+      "get": {
+        "tags": ["Post"],
+        "summary": "List Post",
+        "description": "Create all Posts",
+        "responses": {
+          "200": {
+            "description": "Listed"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Post"],
+        "summary": "Updated a Post",
+        "description": "Updated a new Post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "body": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "id": "b94f5718-38b6-4e5d-b294-83c46fcc7bc5",
+                  "name": "Post updated exemple name",
+                  "body": "Post updated exemple body"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Post"],
+        "summary": "delete a Post",
+        "description": "delete a new Post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "id": "b94f5718-38b6-4e5d-b294-83c46fcc7bc5"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "delete"
+          }
+        }
+      }
+    },
+    "/post/like": {
+      "post": {
+        "tags": ["Post"],
+        "summary": "Like a Post",
+        "description": "Like a new Post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "id": "db3bf451-dd11-46e7-bac7-92ae418a16fd"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Like"
+          }
+        }
+      }
+    },
+    "/post/deslike": {
+      "post": {
+        "tags": ["Post"],
+        "summary": "DesLike a Post",
+        "description": "DesLike a new Post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "id": "db3bf451-dd11-46e7-bac7-92ae418a16fd"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "DesLike"
+          },
+          "400": {
+            "description": "O post não tem nenhum like!"
+          }
+        }
+      }
+    },
+    "/comment/create": {
+      "post": {
+        "tags": ["Comment"],
+        "summary": "Create a Comennt",
+        "description": "Create a new Comennt",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "post_id": {
+                    "type": "string"
+                  },
+                  "name_user": {
+                    "type": "string"
+                  },
+                  "comment": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "post_id": "Comennt exemple name",
+                  "name_user": "Comennt exemple name",
+                  "comment": "Comennt exemple body"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/comment": {
+      "put": {
+        "tags": ["Comment"],
+        "summary": "Updated a comment",
+        "description": "Updated a new comment",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "comment": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "id": "b94f5718-38b6-4e5d-b294-83c46fcc7bc5",
+                  "comment": "comment updated exemple comment"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Comment"],
+        "summary": "delete a comment",
+        "description": "delete a new comment",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "id": "b94f5718-38b6-4e5d-b294-83c46fcc7bc5"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "delete"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Comment"],
+        "summary": "List  comment",
+        "description": "list all comments",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "id": "b94f5718-38b6-4e5d-b294-83c46fcc7bc5"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "listed"
+          }
+        }
+      }
     }
+  }
 }

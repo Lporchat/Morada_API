@@ -9,6 +9,9 @@ import cors from "cors";
 import "../src/shared/infra/typeorm";
 import { AppError } from "../src/shared/errors/AppError";
 import { routes } from "./shared/infra/http";
+import createConnection from "./shared/infra/typeorm";
+
+createConnection();
 
 const app = express();
 

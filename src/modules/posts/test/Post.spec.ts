@@ -1,9 +1,12 @@
 import { Connection, createConnection } from "typeorm";
+import { Posts } from "../infra/typeorm/entities/posts";
 import { CreatePostUseCase } from "../useCases/CreatePost/CreatePostUseCase";
+import { ListPostUseCase } from "../useCases/ListPosts/ListPostUseCase";
 import { UpdatedPostUseCase } from "../useCases/UpdatedPost/UpdatedPostUseCase";
 
 let createPostUseCase: CreatePostUseCase;
 let updatedPostUseCase: UpdatedPostUseCase;
+let listPostUseCase: ListPostUseCase;
 let connection: Connection;
 
 describe("Create a post", () => {
@@ -13,6 +16,7 @@ describe("Create a post", () => {
 
     createPostUseCase = new CreatePostUseCase();
     updatedPostUseCase = new UpdatedPostUseCase();
+    listPostUseCase = new ListPostUseCase();
   });
 
   afterAll(async () => {
@@ -40,6 +44,18 @@ describe("Create a post", () => {
       "post Editado"
     );
     console.log(postEdit);
-    expect(postEdit).toHaveProperty("id");
+    expect(postEdit.body).toEqual("post Editado");
+    expect(postEdit.name).toEqual("post Editado");
+  });
+
+  it("Listando todos os post", async () => {
+    const Post = await createPostUseCase.execute(
+      "teste de nome de post",
+      "teste de corpo de post"
+    );
+
+    const list = await listPostUseCase.execute();
+
+    expect(list).toBeInstanceOf(Array);
   });
 });

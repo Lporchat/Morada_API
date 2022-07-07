@@ -1,8 +1,8 @@
 # Inicialização
 
-base de uma aplicação de Node com TypeScript já configurada.
-
 Clone o projeto e instale as dependências dele.
+
+- "yarn" ou "npm"
 
 Caso tenha docker e o docker-compose na maquina basta usar o comando:
 

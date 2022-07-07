@@ -20,9 +20,9 @@ class UpdatedPostController {
 
     const updatedPostUseCase = new UpdatedPostUseCase();
 
-    await updatedPostUseCase.execute(id, name, body);
+    const post = await updatedPostUseCase.execute(id, name, body);
 
-    return res.status(200).send();
+    return res.status(200).send(post);
   }
 }
 

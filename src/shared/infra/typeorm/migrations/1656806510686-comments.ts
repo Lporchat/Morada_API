@@ -35,8 +35,8 @@ export class comments1656806510686 implements MigrationInterface {
             referencedTableName: "posts",
             referencedColumnNames: ["id"],
             columnNames: ["post_id"],
-            onDelete: "SET NULL",
-            onUpdate: "SET NULL",
+            onDelete: "CASCADE",
+            onUpdate: "CASCADE",
           },
         ],
       })

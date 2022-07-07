@@ -1,3 +1,12 @@
-import { createConnection } from "typeorm";
+import { Connection, createConnection, getConnectionOptions } from "typeorm";
 
-createConnection();
+//caso não seja informado o host ele deve usar o do docker, caso contrario usara o que sera informado
+export default async (): Promise<Connection> => {
+  const defaultOptions = await getConnectionOptions();
+
+  return createConnection(
+    Object.assign(defaultOptions, {
+      database: defaultOptions.database,
+    })
+  );
+};
